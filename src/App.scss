@@ -1,0 +1,14 @@
+@import 'mixins';
+
+.App {
+  @include grid;
+  .App-header {
+    @include centered;
+    grid-row: 1;
+  }
+  .Search-Container {
+    @include centered;
+    flex-direction: column;
+    grid-row: 2;
+  }
+}
