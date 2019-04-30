@@ -10,5 +10,10 @@
     @include centered;
     flex-direction: column;
     grid-row: 2;
+    .search-input {
+      font-size: 1.5em;
+      width: 20em;
+      padding: 0.5em;
+    }
   }
 }
