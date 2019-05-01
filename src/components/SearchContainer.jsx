@@ -14,32 +14,26 @@ export default class searchContainer extends Component {
     this.setState({ input: e.target.value });
   };
 
-  onSearch = (input) => {
+  onSearch = () => {
     const actors = this.props.data
       .map(actor => actor.starring.value)
-      .map(el => el.replace("http://dbpedia.org/resource/", ""));
+      .map(el => el.replace("http://dbpedia.org/resource/", ""))
+      .filter(actor => actor);
     const films = this.props.data
       .map(film => film.f.value)
-      .map(el => el.replace("http://dbpedia.org/resource/", ""));
-    if (input === actors) {
-      const indexes = actors
-      .map((actor, i) => (actor === input ? i : -1))
+      .map(el => el.replace("http://dbpedia.org/resource/", ""))
+      .filter(film => film);
+    const actorIndex = actors
+      .map((actor, i) => (actor === this.state.input ? i : -1))
       .filter(index => index !== -1);
-      return (
-        <p>
-          {films.map((film, i) =>
-            film.indexOf(
-              indexes.forEach(function(number) {
-                return number;
-              })
-            )
-          )}
-        </p>
-      );
-    } else {
-      return <p>Error!</p>;
+    if (actors.includes(this.state.input)) {
+      let filmTitles = actorIndex.map(item => (
+        <li key={item}>{films[item]}</li>
+      ));
+      return filmTitles;
     }
   };
+
   render() {
     const { input } = this.state;
     return (

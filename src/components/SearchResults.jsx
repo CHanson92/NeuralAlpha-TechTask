@@ -4,8 +4,8 @@ export default class SearchResults extends Component {
   render() {
     return (
       <>
-        {this.props.onSearch}
+        <ul>{this.props.onSearch}</ul>
       </>
-    )
+    );
   }
 }
