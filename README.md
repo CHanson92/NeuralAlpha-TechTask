@@ -11,7 +11,7 @@ In the project directory, you can run:
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### How To Use
+## How To Use
 
 Search for the actor using this format: 'FirstName_LastName' for example: 'Brad_Pitt'
 
