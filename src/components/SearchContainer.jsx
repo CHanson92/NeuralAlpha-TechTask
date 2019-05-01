@@ -19,6 +19,7 @@ export default class searchContainer extends Component {
       .map(actor => actor.starring.value)
       .map(el => el.replace("http://dbpedia.org/resource/", ""))
       .filter(actor => actor);
+    console.log(actors);
     const films = this.props.data
       .map(film => film.f.value)
       .map(el => el.replace("http://dbpedia.org/resource/", ""))
