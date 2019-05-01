@@ -8,32 +8,44 @@ export default class searchContainer extends Component {
     this.state = {
       input: ""
     };
+    this.onSearch.bind(this);
   }
   onInputChange = e => {
     this.setState({ input: e.target.value });
   };
 
-  onSearch = (input, actors, films) => {
-    if (input === actors) {
-      const indexes = actors.map((actor, i) => actor === input ? i : -1)
-      .filter(index => index !== -1);
-      return (
-        <p>{films.map((film, i) => film.indexOf(indexes.toString()))}</p>
-      )
-    }
-  };
-  render() {
-    const { input } = this.state;
+  onSearch = (input) => {
     const actors = this.props.data
       .map(actor => actor.starring.value)
       .map(el => el.replace("http://dbpedia.org/resource/", ""));
     const films = this.props.data
       .map(film => film.f.value)
       .map(el => el.replace("http://dbpedia.org/resource/", ""));
+    if (input === actors) {
+      const indexes = actors
+      .map((actor, i) => (actor === input ? i : -1))
+      .filter(index => index !== -1);
+      return (
+        <p>
+          {films.map((film, i) =>
+            film.indexOf(
+              indexes.forEach(function(number) {
+                return number;
+              })
+            )
+          )}
+        </p>
+      );
+    } else {
+      return <p>Error!</p>;
+    }
+  };
+  render() {
+    const { input } = this.state;
     return (
       <>
         <SearchBar onInputChange={this.onInputChange} input={input} />
-        <SearchResults {...this.onSearch}/>
+        <SearchResults onSearch={this.onSearch()} />
       </>
     );
   }

@@ -4,7 +4,7 @@ export default class SearchResults extends Component {
   render() {
     return (
       <>
-        {this.onSearch}
+        {this.props.onSearch}
       </>
     )
   }
